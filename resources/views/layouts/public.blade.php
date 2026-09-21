@@ -6,6 +6,10 @@
     <title>@yield('title', config('app.name', 'Nirwana Gents'))</title>
     <meta name="description" content="@yield('meta_description', 'Nirwana Gents: barbershop premium untuk potong rambut, grooming, dan produk perawatan pria.')">
     <link rel="canonical" href="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', config('app.name', 'Nirwana Gents'))">
+    <meta property="og:description" content="@yield('meta_description', 'Nirwana Gents: barbershop premium untuk potong rambut, grooming, dan produk perawatan pria.')">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('head')
 </head>
