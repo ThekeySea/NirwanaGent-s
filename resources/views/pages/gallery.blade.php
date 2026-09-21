@@ -4,7 +4,7 @@
 @section('meta_description', 'Galeri suasana dan detail kerja Nirwana Gents. Foto final menyusul.')
 
 @section('content')
-<div class="mx-auto max-w-6xl px-5 pt-36 pb-16 md:pt-44">
+<div class="mx-auto max-w-6xl px-5 pt-28 pb-16 md:pt-44">
     <x-section-intro
         eyebrow="Gallery"
         title="Lihat ruang dan detailnya."

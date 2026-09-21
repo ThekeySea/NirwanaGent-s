@@ -4,7 +4,7 @@
 @section('meta_description', 'Hubungi Nirwana Gents. Alamat dan jam resmi TBD, gunakan form pesan.')
 
 @section('content')
-<div class="mx-auto max-w-6xl px-5 pt-36 pb-16 md:pt-44">
+<div class="mx-auto max-w-6xl px-5 pt-28 pb-16 md:pt-44">
     <x-section-intro
         eyebrow="Contact"
         title="Kirim pesan, kami baca satu per satu."

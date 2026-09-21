@@ -33,6 +33,6 @@ class Service extends Model
 
     public function formattedPrice(): string
     {
-        return 'Rp ' . number_format($this->price, 0, ',', '.');
+        return 'Rp '.number_format($this->price, 0, ',', '.');
     }
 }

@@ -24,6 +24,8 @@
 
     @include('layouts.partials.site-footer')
 
+    @include('layouts.partials.bottom-navbar')
+
     @stack('scripts')
 </body>
 </html>

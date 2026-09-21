@@ -8,6 +8,8 @@
     'image' => null,
     'imageAlt' => '',
     'isSample' => true,
+    'productId' => null,
+    'canAdd' => false,
 ])
 
 <article class="group rounded-shell border border-espresso/10 bg-white/50 p-3">
@@ -30,7 +32,16 @@
             <p class="mt-1 text-xs text-taupe">{{ $stockLabel }}@if ($isSample) (sample)@endif</p>
             <div class="mt-4 flex gap-2">
                 <a href="{{ $href }}" class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-pill border border-espresso/20 px-4 py-2 text-sm font-semibold hover:border-espresso/60">Detail</a>
-                <button type="button" class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-pill bg-near-black px-4 py-2 text-sm font-semibold text-warm-cream hover:bg-espresso" aria-label="Tambah {{ $name }} ke keranjang">Add to Cart</button>
+                @if ($productId && $canAdd)
+                    <form method="POST" action="/cart/items" class="flex-1">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $productId }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="inline-flex min-h-[44px] w-full items-center justify-center rounded-pill bg-near-black px-4 py-2 text-sm font-semibold text-warm-cream hover:bg-espresso" aria-label="Tambah {{ $name }} ke keranjang">Add to Cart</button>
+                    </form>
+                @else
+                    <button type="button" disabled class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-pill bg-near-black/40 px-4 py-2 text-sm font-semibold text-warm-cream" aria-disabled="true" title="Tidak bisa ditambahkan">Add to Cart</button>
+                @endif
             </div>
         </div>
     </div>

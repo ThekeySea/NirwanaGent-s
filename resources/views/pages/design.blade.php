@@ -4,7 +4,7 @@
 @section('meta_description', 'Preview komponen design system Nirwana Gents. Semua data bertanda sample.')
 
 @section('content')
-<div class="mx-auto max-w-6xl px-5 pt-36 pb-20 md:pt-44">
+<div class="mx-auto max-w-6xl px-5 pt-28 pb-20 md:pt-44">
     <x-section-intro
         eyebrow="Fase 1: Design system"
         title="Komponen dasar yang dipakai di semua halaman."
@@ -57,7 +57,7 @@
         title="Profil singkat tanpa pengalaman fiktif."
     />
     <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <x-barber-card name="Arya (SAMPLE)" role="Barber" specialties="Classic cut, fade" href="/barbers/sample" />
+        <x-barber-card name="Arya (SAMPLE)" role="Barber" specialties="Classic cut, fade" href="/barbers/sample" image="/images/barber-arya.jpg" imageAlt="Foto Arya (SAMPLE)" />
         <x-barber-card name="Bagas (SAMPLE)" role="Senior Barber" specialties="Beard trim, styling" href="/barbers/sample" />
         <x-barber-card name="Cakra (SAMPLE)" role="Barber" specialties="Kids cut, classic cut" href="/barbers/sample" />
     </div>
@@ -69,7 +69,7 @@
         title="Produk dengan status stock jujur."
     />
     <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <x-product-card name="Pomade Classic (SAMPLE)" price="Rp TBD" stockLabel="12 pcs di sample" stockStatus="active" href="/shop/sample" />
+        <x-product-card name="Pomade Classic (SAMPLE)" price="Rp TBD" stockLabel="12 pcs di sample" stockStatus="active" href="/shop/sample" image="/images/product-pomade.jpg" />
         <x-product-card name="Beard Oil (SAMPLE)" price="Rp TBD" stockLabel="2 pcs, hampir habis (sample)" stockStatus="low" href="/shop/sample" />
         <x-product-card name="Clay Matte (SAMPLE)" price="Rp TBD" stockLabel="Nonaktif di sample" stockStatus="inactive" href="/shop/sample" />
     </div>

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Barber;
+use App\Models\BusinessHour;
 use App\Models\Media;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -63,6 +64,7 @@ class NirwanaSampleSeeder extends Seeder
                 'role' => 'Barber',
                 'bio' => 'Fokus pada potong klasik dan fade rapi. Data sample.',
                 'specialties' => 'Classic cut, fade',
+                'image_url' => '/images/barber-arya.jpg',
                 'is_active' => true,
             ],
             [
@@ -71,6 +73,7 @@ class NirwanaSampleSeeder extends Seeder
                 'role' => 'Senior Barber',
                 'bio' => 'Fokus pada kerapian jenggot dan styling. Data sample.',
                 'specialties' => 'Beard trim, styling',
+                'image_url' => '/images/barber-bagas.jpg',
                 'is_active' => true,
             ],
         ];
@@ -93,6 +96,7 @@ class NirwanaSampleSeeder extends Seeder
                 'usage_instructions' => 'Ambil seujung jari, ratakan di telapak, aplikasikan ke rambut kering.',
                 'price' => 85000,
                 'stock' => 12,
+                'image_url' => '/images/product-pomade.jpg',
                 'is_active' => true,
             ],
             [
@@ -103,6 +107,7 @@ class NirwanaSampleSeeder extends Seeder
                 'usage_instructions' => 'Teteskan 2 sampai 3 tetes, pijat ke jenggot dan kulit.',
                 'price' => 95000,
                 'stock' => 2,
+                'image_url' => '/images/product-beard-oil.jpg',
                 'is_active' => true,
             ],
             [
@@ -113,6 +118,7 @@ class NirwanaSampleSeeder extends Seeder
                 'usage_instructions' => 'Gunakan sedikit pada rambut kering untuk hasil matte.',
                 'price' => 90000,
                 'stock' => 0,
+                'image_url' => '/images/product-clay.jpg',
                 'is_active' => false,
             ],
         ];
@@ -121,17 +127,30 @@ class NirwanaSampleSeeder extends Seeder
             Product::updateOrCreate(['slug' => $data['slug']], $data);
         }
 
+        // Galeri sample. Hapus entri lama berkas kosong lalu isi dengan foto berlisensi.
+        Media::where('collection', 'gallery')->delete();
+
         $gallery = [
-            ['collection' => 'gallery', 'path' => '', 'alt' => 'Suasana kursi barber Nirwana Gents (sample)', 'caption' => 'Ruang potong'],
-            ['collection' => 'gallery', 'path' => '', 'alt' => 'Detail alat potong tertata (sample)', 'caption' => 'Detail alat'],
-            ['collection' => 'gallery', 'path' => '', 'alt' => 'Cermin dan pencahayaan hangat barbershop (sample)', 'caption' => 'Interior'],
+            ['collection' => 'gallery', 'path' => '/images/gallery-cut.jpg', 'alt' => 'Barber merapikan jenggot pelanggan dengan gunting (sample)', 'caption' => 'Potong presisi'],
+            ['collection' => 'gallery', 'path' => '/images/gallery-tools.jpg', 'alt' => 'Clipper, gunting, sisir, dan pomade tertata di atas meja (sample)', 'caption' => 'Detail alat'],
+            ['collection' => 'gallery', 'path' => '/images/gallery-beard.jpg', 'alt' => 'Barber mengerjakan fade dengan razor (sample)', 'caption' => 'Detail fade'],
         ];
 
         foreach ($gallery as $item) {
-            Media::firstOrCreate(
-                ['caption' => $item['caption'], 'collection' => 'gallery'],
-                $item
+            Media::create($item);
+        }
+
+        // Jam operasional sample. Senin sampai Sabtu 09:00 sampai 20:00, Minggu tutup.
+        // Ganti dengan jam resmi setelah data final tersedia.
+        foreach ([1, 2, 3, 4, 5, 6] as $day) {
+            BusinessHour::updateOrCreate(
+                ['day_of_week' => $day],
+                ['open_time' => '09:00:00', 'close_time' => '20:00:00', 'is_closed' => false]
             );
         }
+        BusinessHour::updateOrCreate(
+            ['day_of_week' => 0],
+            ['open_time' => null, 'close_time' => null, 'is_closed' => true]
+        );
     }
 }

@@ -4,14 +4,18 @@
 @section('meta_description', $barber->bio ?? 'Profil barber Nirwana Gents.')
 
 @section('content')
-<div class="mx-auto max-w-6xl px-5 pt-36 pb-16 md:pt-44">
+<div class="mx-auto max-w-6xl px-5 pt-28 pb-16 md:pt-44">
     <a href="/barbers" class="inline-flex min-h-[44px] items-center text-sm font-semibold text-taupe hover:text-espresso">&larr; Semua barbers</a>
 
     <div class="mt-6 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div class="overflow-hidden rounded-shell border border-espresso/10 bg-near-black text-warm-cream">
-            <div class="flex aspect-[4/5] items-center justify-center bg-espresso" role="img" aria-label="Foto {{ $barber->name }} (placeholder)">
-                <span class="font-display text-7xl text-brass/70">{{ substr($barber->name, 0, 1) }}</span>
-            </div>
+            @if ($barber->image_url)
+                <img src="{{ $barber->image_url }}" alt="Foto {{ $barber->name }}" class="aspect-[4/5] w-full object-cover" loading="lazy">
+            @else
+                <div class="flex aspect-[4/5] items-center justify-center bg-espresso" role="img" aria-label="Foto {{ $barber->name }} (placeholder)">
+                    <span class="font-display text-7xl text-brass/70">{{ substr($barber->name, 0, 1) }}</span>
+                </div>
+            @endif
             <div class="p-6">
                 <div class="flex items-center gap-2">
                     @if (str_contains($barber->slug, 'sample'))

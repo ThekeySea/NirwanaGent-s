@@ -14,7 +14,7 @@ class ShopController extends Controller
         $query = Product::query()->with('category')->where('is_active', true);
 
         if ($request->filled('q')) {
-            $query->where('name', 'like', '%' . $request->string('q') . '%');
+            $query->where('name', 'like', '%'.$request->string('q').'%');
         }
 
         if ($request->filled('category')) {

@@ -18,7 +18,7 @@
         </div>
     </header>
 
-    <main id="main" class="mx-auto w-full max-w-3xl px-5 py-10">
+    <main id="main" class="mx-auto w-full max-w-3xl px-5 pt-10 pb-28 md:pb-10">
         @if (session('status'))
             <div role="status" class="mb-6 rounded-core border border-espresso/15 bg-white/60 px-4 py-3 text-sm">{{ session('status') }}</div>
         @endif
@@ -36,5 +36,7 @@
 
         @yield('content')
     </main>
+
+    @include('layouts.partials.bottom-navbar')
 </body>
 </html>

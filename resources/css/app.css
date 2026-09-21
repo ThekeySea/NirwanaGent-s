@@ -77,6 +77,103 @@
     }
 }
 
+@layer components {
+    /* Sidebar admin sebagai drawer di bawah lg, sticky biasa di lg ke atas. */
+    @media (max-width: 1023.98px) {
+        .admin-sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 50;
+            width: 18rem;
+            height: 100dvh;
+            overflow-y: auto;
+            transform: translateX(-105%);
+            transition: transform 0.38s var(--ease-lux);
+        }
+
+        body.admin-nav-open .admin-sidebar {
+            transform: translateX(0);
+        }
+
+        .admin-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 40;
+            background: rgb(17 16 14 / 0.6);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s var(--ease-lux);
+        }
+
+        body.admin-nav-open .admin-backdrop {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    /* Modal konfirmasi keluar admin. */
+    .modal-logout {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s var(--ease-lux);
+    }
+
+    body.logout-modal-open .modal-logout {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .modal-logout-card {
+        transform: translateY(14px) scale(0.98);
+        transition: transform 0.38s var(--ease-lux);
+    }
+
+    body.logout-modal-open .modal-logout-card {
+        transform: none;
+    }
+
+    /* Navigasi public: garis brass animasi untuk hover dan active. */
+    .nav-link {
+        position: relative;
+        padding-block: 0.25rem;
+        transition: color 0.35s var(--ease-lux);
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        height: 2px;
+        width: 100%;
+        border-radius: 999px;
+        background: var(--color-brass);
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.45s var(--ease-lux);
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+        color: var(--color-brass);
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+        transform: scaleX(1);
+    }
+
+    .nav-link-active {
+        color: var(--color-brass);
+    }
+
+    .nav-link-active::after {
+        transform: scaleX(1);
+    }
+}
+
 @layer utilities {
     .reveal {
         opacity: 0;

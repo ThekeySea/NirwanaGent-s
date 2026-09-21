@@ -25,7 +25,7 @@
         </nav>
     </div>
     <div class="border-t border-white/10">
-        <div class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-5 text-xs text-warm-cream/50 sm:flex-row sm:items-center sm:justify-between">
+        <div class="mx-auto flex max-w-6xl flex-col gap-2 px-5 pt-5 pb-28 md:py-5 text-xs text-warm-cream/50 sm:flex-row sm:items-center sm:justify-between">
             <p>&copy; {{ date('Y') }} Nirwana Gent&rsquo;s. Seluruh hak cipta dilindungi.</p>
             <p>Harga dan ketersediaan mengikuti data sistem, bukan materi promosi.</p>
         </div>

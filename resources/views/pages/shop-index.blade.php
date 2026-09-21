@@ -1,14 +1,14 @@
 @extends('layouts.public')
 
 @section('title', 'Shop - Nirwana Gents')
-@section('meta_description', 'Katalog produk grooming Nirwana Gents dengan harga dan stock tertulis. Checkout penuh hadir di Fase 5.')
+@section('meta_description', 'Katalog produk grooming Nirwana Gents dengan harga dan stock tertulis.')
 
 @section('content')
-<div class="mx-auto max-w-6xl px-5 pt-36 pb-16 md:pt-44">
+<div class="mx-auto max-w-6xl px-5 pt-28 pb-16 md:pt-44">
     <x-section-intro
         eyebrow="Grooming store"
         title="Belanja produk perawatan."
-        description="Fase 2 masih read-only. Tombol Add to Cart aktif penuh di Fase 5 setelah cart dan checkout dibangun."
+        description="Harga dan stock mengikuti database. Checkout menghitung ulang total di server."
     />
 
     <form method="GET" action="/shop" class="mt-8 flex flex-col gap-3 rounded-shell border border-espresso/10 bg-white/40 p-4 md:flex-row md:items-center" role="search" aria-label="Cari produk">
@@ -37,7 +37,10 @@
                 :stockLabel="$state['label']"
                 :stockStatus="$state['status']"
                 :href="'/shop/' . $product->slug"
+                :image="$product->image_url"
                 :isSample="str_contains($product->slug, 'sample')"
+                :productId="$product->id"
+                :canAdd="$product->is_active && $product->stock > 0"
             />
         @empty
             <p class="text-sm text-espresso/70">Tidak ada produk untuk filter ini. <a class="underline" href="/shop">Tampilkan semua.</a></p>

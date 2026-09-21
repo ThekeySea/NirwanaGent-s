@@ -4,7 +4,7 @@
 @section('meta_description', 'Daftar layanan Nirwana Gents dengan harga dan durasi tertulis. Data sample ditandai jelas.')
 
 @section('content')
-<div class="mx-auto max-w-6xl px-5 pt-36 pb-16 md:pt-44">
+<div class="mx-auto max-w-6xl px-5 pt-28 pb-16 md:pt-44">
     <x-section-intro
         eyebrow="Services"
         title="Pilih layanan sesuai kebutuhan."

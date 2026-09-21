@@ -4,7 +4,7 @@
 @section('meta_description', 'Daftar barber Nirwana Gents dengan spesialisasi jelas. Tanpa klaim pengalaman fiktif.')
 
 @section('content')
-<div class="mx-auto max-w-6xl px-5 pt-36 pb-16 md:pt-44">
+<div class="mx-auto max-w-6xl px-5 pt-28 pb-16 md:pt-44">
     <x-section-intro
         eyebrow="Barbers"
         title="Pilih yang memotong rambutmu."
@@ -17,6 +17,8 @@
                 :role="$barber->role"
                 :specialties="$barber->specialties ?? 'Spesialisasi menyusul'"
                 :href="'/barbers/' . $barber->slug"
+                :image="$barber->image_url"
+                :imageAlt="'Foto ' . $barber->name"
                 :isSample="str_contains($barber->slug, 'sample')"
             />
         @empty

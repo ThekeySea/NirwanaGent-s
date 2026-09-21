@@ -4,7 +4,7 @@
 @section('meta_description', $service->description ?? 'Detail layanan Nirwana Gents.')
 
 @section('content')
-<div class="mx-auto max-w-6xl px-5 pt-36 pb-16 md:pt-44">
+<div class="mx-auto max-w-6xl px-5 pt-28 pb-16 md:pt-44">
     <a href="/services" class="inline-flex min-h-[44px] items-center text-sm font-semibold text-taupe hover:text-espresso">&larr; Semua services</a>
 
     <div class="mt-6 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
