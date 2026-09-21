@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+/*
+ * Nirwana Gent's design tokens - Fase 0
+ * Palette dari Nirwana-docs/prd.md
+ * Font wajib self-hosted di public/fonts/ (Fase 1 isi woff2 berlisensi).
+ * Untuk sekarang fallback ke serif/sans sistem agar build tidak bergantung ke CDN.
+ */
+
+@theme {
+    --color-espresso: #241a14;
+    --color-near-black: #11100e;
+    --color-warm-cream: #f3ebdd;
+    --color-brass: #b18a4a;
+    --color-taupe: #8c8174;
+
+    --font-display: 'Cormorant Garamond', 'Times New Roman', ui-serif, Georgia, serif;
+    --font-sans: 'Manrope', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+    --radius-shell: 1.75rem;
+    --radius-core: 1.25rem;
+    --radius-pill: 999px;
+
+    --ease-lux: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Self-hosted font placeholders. Letakkan file berlisensi di public/fonts/. */
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('/fonts/cormorant-garamond-500.woff2') format('woff2');
+    font-weight: 500 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('/fonts/manrope-400.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: var(--color-warm-cream);
+        color: var(--color-espresso);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+        background: var(--color-brass);
+        color: var(--color-near-black);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-brass);
+        outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+}
+
+@layer utilities {
+    .reveal {
+        opacity: 0;
+        transform: translateY(48px);
+    }
+
+    .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+            opacity 0.9s var(--ease-lux),
+            transform 0.9s var(--ease-lux);
+    }
+}
